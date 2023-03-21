@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.0.4'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group 'com.griddynamics.reactive'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // spring dependencies
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-webflux'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb-reactive'
+    // lombok dependencies
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    // junit dependencies
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
+    testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+    testImplementation group: 'io.projectreactor', name: 'reactor-test', version: '3.5.4'
+    testImplementation group: 'com.github.tomakehurst', name: 'wiremock', version: '3.0.0-beta-4'
+}
+
+test {
+    useJUnitPlatform()
+}
